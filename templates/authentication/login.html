@@ -1,0 +1,54 @@
+{% extends 'base_auth.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card mt-5">
+      
+
+      <div class="card-body">
+      <div class="card-title py-3">
+        <h1 style="color:rgb(42, 81, 160)">Welcome to Quiz Application</h1>
+        <hr style="width:50%;text-align:left;margin-left:0"> 
+        <h4>Login to your account</h4>
+      </div>  
+        
+        <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {% include 'messages.html' %}
+          <div class="form-group">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              id="usernameField"
+              value="{{fieldValues.username}}"
+              class="form-control form-contol-sm"
+            />
+          </div>
+          
+          
+          <div class="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              id="passwordField"
+              class="form-control form-contol-sm"
+            />
+            <small class="float-right py-3 showPasswordToggle">SHOW</small>
+          </div>
+          <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+  <div class="col-md-4"></div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock content %}
